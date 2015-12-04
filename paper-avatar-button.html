@@ -1,0 +1,116 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-material/paper-material.html">
+<link rel="import" href="../paper-behaviors/paper-button-behavior.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <paper-avatar-button></paper-avatar-button>
+
+@demo
+-->
+<dom-module id="paper-avatar-button">
+  <template strip-whitespace>
+    <style include="paper-material"></style>
+    <style include="paper-icon-button">
+      :host {
+        overflow: hidden;
+        padding: 0px;
+        margin: 0px;
+        border-radius: 50%;
+        width: 32px;        
+        height: 32px;        
+        @apply(--paper-avatar-button);
+      }
+      
+      :host #ink {
+        color: var(--paper-avatar-button-ink-color, --primary-text-color);
+        opacity: 0.6;
+      }
+      
+      :host([disabled]) {
+        color: var(--paper-avatar-button-disabled-text, --disabled-text-color);
+        pointer-events: none;
+        cursor: auto;
+        @apply(--paper-avatar-button-disabled);
+      }
+      
+      :host(:hover) { 
+        @apply(--paper-avatar-button-hover);
+      }
+      
+      iron-icon {
+        --iron-icon-width: 100%;
+        --iron-icon-height: 100%;
+      }      
+    </style>
+    <iron-icon id="icon" src="{{avatar}}"></iron-icon>
+  </template>
+  
+  <script>
+  
+    Polymer({
+  
+      is: 'paper-avatar-button',
+      
+      behaviors: [
+        Polymer.PaperButtonBehavior,
+        Polymer.PaperInkyFocusBehavior
+      ],
+  
+      properties: {
+  
+        /**
+        * The avatar to display.
+        *
+        *
+        */
+        avatar: {
+          type: String,
+          reflectToAttribute: true
+        },
+        /**
+         * Specifies the alternate text for the button, for accessibility.
+         */
+        alt: {
+          type: String,
+          observer: "_altChanged"
+        },
+                
+        /**
+        * If true, the button should be styled with a shadow.
+        */
+        raised: {
+          type: Boolean,
+          reflectToAttribute: true,
+          value: false,
+          observer: '_calculateElevation'
+        },
+      },
+  
+      _calculateElevation: function() {
+        if (!this.raised) {
+          this.elevation = 0;
+        } else {
+          Polymer.PaperButtonBehaviorImpl._calculateElevation.apply(this);
+        }
+      },
+
+      _altChanged: function(newValue, oldValue) {
+        var label = this.getAttribute('aria-label');
+        // Don't stomp over a user-set aria-label.
+        if (!label || oldValue == label) {
+          this.setAttribute('aria-label', newValue);
+        }
+      },
+            
+      ready: function() {
+      },
+  
+    });
+  
+</script>
+</dom-module>

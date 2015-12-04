@@ -1,0 +1,32 @@
+{
+  "name": "paper-avatar-button",
+  "version": "1.2.0",
+  "authors": [
+    "Vinicius Patrinhani <patrinhani@ciandt.com>"
+  ],
+  "description": "An element that display's an avatar button a lá material design.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "seed"
+  ],
+  "main": "paper-avatar-button.html",
+  "homepage": "https://github.com/WebPaperElements/paper-avatar-button/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
+  "dependencies": {
+    "paper-material": "PolymerElements/paper-material#~1.0.4",
+    "paper-behaviors": "PolymerElements/paper-behaviors#~1.0.10",
+    "paper-icon-button": "PolymerElements/paper-icon-button#~1.0.5",
+    "iron-icon": "PolymerElements/iron-icon#~1.0.7"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*",
+    "iron-icons": "PolymerElements/iron-icons#~1.0.5"
+  }
+}
