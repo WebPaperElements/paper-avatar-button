@@ -17,10 +17,8 @@ Example:
     <style include="paper-material"></style>
     <style include="paper-icon-button">
       :host {
-        overflow: hidden;
         padding: 0px;
         margin: 0px;
-        border-radius: 50%;
         width: 32px;        
         height: 32px;        
         @apply(--paper-avatar-button);
@@ -43,6 +41,8 @@ Example:
       }
       
       iron-icon {
+        overflow: hidden;
+        border-radius: 50%;
         --iron-icon-width: 100%;
         --iron-icon-height: 100%;
       }      
